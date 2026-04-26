@@ -7,7 +7,6 @@ def write_file(working_directory, file_path, content):
         os.path.join(working_dir_abs, file_path)
     )
 
-    
     if os.path.commonpath([working_dir_abs, abs_file_path]) != working_dir_abs:
         return f'Error: Cannot write to "{file_path}" as it is outside the permitted working directory'
 
