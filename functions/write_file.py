@@ -38,9 +38,9 @@ schema_write_file = types.FunctionDeclaration(
                 type=types.Type.STRING,
                 description="The path to the file to write.",
             ),
-             "contents": types.Schema(
+            "content": types.Schema(
                 type=types.Type.STRING,
-                description="The contents to write to the files as a string",
+                description="The content to write to the files as a string",
             )
         },
     ),

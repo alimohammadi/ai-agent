@@ -3,11 +3,13 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+
 from functions.get_files_info import schema_get_files_info
 from functions.get_file_content import schema_get_file_content
 from functions.run_python_file import schema_run_python_file
 from functions.write_file import schema_write_file
 
+from functions.call_function import call_function
 
 def main():
     load_dotenv()
@@ -73,7 +75,9 @@ def main():
 
     if response.function_calls:
         for function_call in response.function_calls:
-            print(f"Calling function: {function_call.name}({function_call.args})")
+            result = call_function(function_call, verbose=verbose_flag)
+            print(result)
+            messages.append(result)
     else:     
         print(response.text)
 
